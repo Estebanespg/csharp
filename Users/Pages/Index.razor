@@ -1,3 +1,20 @@
 ﻿@page "/"
+@inject NavigationManager nav
 
-<h1>Hello, world!</h1>
+@code
+{
+    private void createView()
+    {
+        nav.NavigateTo("/create");
+    }
+    private void readAllView()
+    {
+        nav.NavigateTo("/read");
+    }
+}
+
+<div>
+    <h1>Menú Usuario</h1>
+    <button @onclick="createView">Crear</button>
+    <button @onclick="readAllView">Visualizar</button>
+</div>

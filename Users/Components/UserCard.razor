@@ -1,0 +1,22 @@
+﻿@inject NavigationManager nav
+
+
+@code {
+    [Parameter]
+    public CRUD.Shared.Models.UserModel User { get; set; }
+
+    private void userInfoView()
+    {
+        nav.NavigateTo($"/readUser/{User.Id}");
+    }
+}
+
+<div class="Container">
+
+    <p class="Name">@User.Name</p>
+    <p class="Email">@User.Email</p>
+    <p class="PhoneNumber">@User.PhoneNumber</p>
+
+    <button @onclick="userInfoView" class="btn">Ver más</button>
+
+</div>

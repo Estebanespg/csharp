@@ -1,0 +1,64 @@
+﻿@inject NavigationManager Nav
+
+@code {
+
+    bool isLoading = false;
+    string Message;
+
+    string name = "";
+    string phoneNumber = "";
+    string email = "";
+
+    private async void CreateUser()
+    {
+
+        // Validaciones del cliente 
+
+
+        Message = "Cargando";
+        isLoading = true;
+        StateHasChanged();
+
+        CRUD.Shared.Models.UserModel model = new();
+        model.Name = name;
+        model.PhoneNumber = phoneNumber;
+        model.Email = email;
+
+        var response = await CRUD.Access.Controllers.User.Create(model);
+
+        isLoading = false;
+        if (response)
+        {
+            Message = "Usuario creado";
+            base.StateHasChanged();
+            return;
+        }
+
+        Message = "Hubo un error";
+        base.StateHasChanged();
+
+    }
+
+    private void menuView()
+    {
+        Nav.NavigateTo("/");
+    }
+}
+
+@page "/create"
+
+<div>
+
+    <h1>Create a new user</h1>
+    @if(!isLoading)
+    {
+        <input @bind="name" type="text" placeholder="Name" />
+        <input @bind="phoneNumber" type="text" placeholder="Phone Number" />
+        <input @bind="email" type="email" placeholder="Email" />
+        <button @onclick="CreateUser">Crear</button>
+    }
+    <button @onclick="menuView" >Cancelar</button>
+
+    <label>@Message</label>
+
+</div>

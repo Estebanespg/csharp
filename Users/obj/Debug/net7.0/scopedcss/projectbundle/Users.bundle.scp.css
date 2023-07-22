@@ -1,0 +1,19 @@
+/* /Components/UserCard.Razor.rz.scp.css */
+.Container[b-afpder1vvv]{
+    background-color: azure;
+}
+
+.Name[b-afpder1vvv]{
+    font-size: 15px;
+    color: black;
+}
+
+.Email[b-afpder1vvv] {
+    font-size: 10px;
+    color: dimgray;
+}
+
+.PhoneNumber[b-afpder1vvv] {
+    font-size: 10px;
+    color: dimgray;
+}

@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\usuario\\Desktop\\CSHARP\\csharp\\Users\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\usuario\\Desktop\\CSHARP\\csharp\\Users\\obj\\Debug\\net7.0\\build-gz\\R8lOsm7m.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\usuario\\Desktop\\CSHARP\\csharp\\Users\\obj\\Debug\\net7.0\\scopedcss\\bundle\\Users.styles.css",
+      "PackagePath": "staticwebassets\\Users.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\usuario\\Desktop\\CSHARP\\csharp\\Users\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\usuario\\Desktop\\CSHARP\\csharp\\Users\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\usuario\\Desktop\\CSHARP\\csharp\\Users\\wwwroot\\index.html.__projection.g.js",
+      "PackagePath": "staticwebassets\\index.html.__projection.g.js"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Users.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.Users.props",
+      "PackagePath": "build\\Users.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Users.props",
+      "PackagePath": "buildMultiTargeting\\Users.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.Users.props",
+      "PackagePath": "buildTransitive\\Users.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

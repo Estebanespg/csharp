@@ -1,0 +1,34 @@
+﻿@page "/read"
+@inject NavigationManager nav
+
+@code {
+
+    List<CRUD.Shared.Models.UserModel> Usuarios = new();
+
+    private void menuView()
+    {
+        nav.NavigateTo("/");
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        var users = await CRUD.Access.Controllers.User.ReadAll();
+        Usuarios = users;
+        await base.OnInitializedAsync();
+    }
+}
+
+
+
+<div>
+
+    <h1>Read all users</h1>
+
+    @foreach(CRUD.Shared.Models.UserModel user in Usuarios)
+    {
+        <UserCard User="user"/>
+    }
+
+    <button @onclick="menuView">Cancelar</button>
+
+</div>

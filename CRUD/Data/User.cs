@@ -1,22 +1,31 @@
-﻿namespace CRUD.Data;
-public class User
+﻿using Microsoft.AspNetCore.Mvc;
+using MySql.Data.MySqlClient;
+using System.Collections.Generic;
+
+namespace CRUD.Data;
+
+
+public static class User
 {
-    public static bool Create(Models.UserModel user)
+
+ 
+    /// <summary>
+    /// Nuevo usuario en la base de datos
+    /// </summary>
+    /// <param name="user">Modelo del usuario</param>
+    public static bool Create(Shared.Models.UserModel user)
     {
         try
         {
-            var connection = new MySql.Data.MySqlClient.MySqlConnection("host=localhost; user=root; database=users; password=; port=3306;");
-            connection.Open();
+            var connection = Conexión.GetOneConnection();
+           
+            connection.DataBase.Users.Add(user);
 
-            var query = $""" INSERT INTO users(email, name, phoneNumber) VALUES('{user.Email}', '{user.Name}', '{user.PhoneNumber}') """;
-
-            var command = new MySql.Data.MySqlClient.MySqlCommand(query, connection);
-
-            command.ExecuteScalar();
+            connection.DataBase.SaveChanges();
 
             return true;
         }
-        catch
+        catch (Exception ex)
         {
             return false;
         }
@@ -24,37 +33,78 @@ public class User
 
 
 
-    public static Models.UserModel Read(int id)
+    /// <summary>
+    /// Obtiene un usuario
+    /// </summary>
+    /// <param name="id">ID Del usuario</param>
+    public static Shared.Models.UserModel Read(int id)
     {
         try
         {
-            var connection = new MySql.Data.MySqlClient.MySqlConnection("host=localhost; user=root; database=users; password=; port=3306;");
-            connection.Open();
 
-            var query = $""" SELECT * FROM users WHERE id = {id} """;
+            var context = Conexión.GetOneConnection();
 
-            var command = new MySql.Data.MySqlClient.MySqlCommand(query, connection);
+            var user = (from U in context.DataBase.Users 
+                       where U.Id == id
+                       select U).FirstOrDefault();
 
-            var reader = command.ExecuteReader();
-            if (!reader.HasRows)
-                return new();
-            
-            while (reader.Read())
-            {
-                var user = new Models.UserModel
-                {
-                    Id = reader.GetInt32(0),
-                    Email = reader.GetString(1),
-                    Name = reader.GetString(2),
-                    PhoneNumber = reader.GetString(3)
-                };
-                return user;
-            }
+
+            return user ?? new();
+
         }
         catch
         {
             return new();
         }
         return new();
+    }
+
+
+    
+    public static List<Shared.Models.UserModel> ReadAll()
+    {
+
+        var context = Conexión.GetOneConnection();
+
+        var users = (from U in context.DataBase.Users
+                        select U).ToList();
+
+        return users;
+
+    }
+
+    public static bool Update(Shared.Models.UserModel newData)
+    {
+
+        var context = Conexión.GetOneConnection();
+
+        var user = (from U in context.DataBase.Users
+                    where U.Id == newData.Id
+                    select U).FirstOrDefault();
+
+        if (user == null)
+            return false;
+
+        user.Email = newData.Email;
+        user.PhoneNumber = newData.PhoneNumber;
+        user.Name = newData.Name;
+
+        context.DataBase.SaveChanges();
+        return true;
+
+    }
+
+    public static bool Delete(int id)
+    {
+        var connection = new MySqlConnection("host=localhost; user=root; database=users; password=; port=3306;");
+        connection.Open();
+
+        var query = $""" DELETE FROM users WHERE id={id}""";
+
+        var command = new MySqlCommand(query, connection);
+
+        int affectedRows = command.ExecuteNonQuery();
+
+        return (affectedRows > 0);
     }
 }
