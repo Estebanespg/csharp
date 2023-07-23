@@ -1,4 +1,4 @@
-﻿@page "/readuser/{id}"
+﻿@page "/Users/Read/{id}"
 @inject NavigationManager nav
 
 @code
@@ -20,28 +20,28 @@
 
     private void editView()
     {
-        nav.NavigateTo("/create");
+        nav.NavigateTo($"/Users/Update/{user.Id}");
     }
 
     private void deleteView()
     {
-        nav.NavigateTo("/read");
+        nav.NavigateTo("/Users/Read");
     }
 
     private void readAllView()
     {
-        nav.NavigateTo("/read");
+        nav.NavigateTo("/Users/Read");
     }
 }
 
 <div>
-    <h1>Información de: @user.Name</h1>
+    <h1>Information of: @user.Name</h1>
 
     <p class="Name">Name: @user.Name</p>
     <p class="Email">Email: @user.Email</p>
     <p class="PhoneNumber">Phone Number: @user.PhoneNumber</p>
 
-    <button @onclick="editView">Editar</button>
-    <button @onclick="deleteView">Eliminar</button>
-    <button @onclick="readAllView">Cancelar</button>
+    <button @onclick="editView">Edit</button>
+    <button @onclick="deleteView">Delete</button>
+    <button @onclick="readAllView">Cancel</button>
 </div>

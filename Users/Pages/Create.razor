@@ -1,4 +1,5 @@
-﻿@inject NavigationManager Nav
+﻿@page "/Users/Create"
+@inject NavigationManager Nav
 
 @code {
 
@@ -45,8 +46,6 @@
     }
 }
 
-@page "/create"
-
 <div>
 
     <h1>Create a new user</h1>
@@ -55,9 +54,9 @@
         <input @bind="name" type="text" placeholder="Name" />
         <input @bind="phoneNumber" type="text" placeholder="Phone Number" />
         <input @bind="email" type="email" placeholder="Email" />
-        <button @onclick="CreateUser">Crear</button>
+        <button @onclick="CreateUser">Create</button>
     }
-    <button @onclick="menuView" >Cancelar</button>
+    <button @onclick="menuView" >Cancel</button>
 
     <label>@Message</label>
 
