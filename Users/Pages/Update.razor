@@ -7,6 +7,9 @@
 
     CRUD.Shared.Models.UserModel user = new();
 
+    bool isLoading = false;
+    string Message;
+
     protected async override void OnInitialized()
     {
         int Uid = int.Parse(id ?? "0");
@@ -18,7 +21,23 @@
 
     private async void UpdateUser()
     {
-        
+        Message = "Cargando";
+        isLoading = true;
+        StateHasChanged();
+
+        var response = await CRUD.Access.Controllers.User.Update(user);
+
+        isLoading = false;
+        if (response)
+        {
+            Message = "Usuario Acualizado";
+            base.StateHasChanged();
+            return;
+        }
+
+        Message = "Hubo un error";
+        base.StateHasChanged();
+
     }
 
     private void userInfoView()
@@ -30,10 +49,15 @@
 <div>
 
     <h1>Update user</h1>
-        <input @bind="@user.Name" type="text" placeholder="Name" />
-        <input @bind="@user.PhoneNumber" type="text" placeholder="Phone Number" />
-        <input @bind="@user.Email" type="email" placeholder="Email" />
+    @if (!isLoading)
+    {
+        <input @bind="user.Name" type="text" placeholder="Name" />
+        <input @bind="user.PhoneNumber" type="text" placeholder="Phone Number" />
+        <input @bind="user.Email" type="email" placeholder="Email" />
         <button @onclick="UpdateUser">Update</button>
+    }
     <button @onclick="userInfoView">Cancel</button>
+
+    <label>@Message</label>
 
 </div>

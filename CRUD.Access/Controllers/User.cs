@@ -52,5 +52,23 @@ namespace CRUD.Access.Controllers
 
             return user;
         }
+
+        public static async Task<bool> Update(CRUD.Shared.Models.UserModel model)
+        {
+            var client = new HttpClient();
+
+            client.BaseAddress = new Uri("http://crudbackfront.somee.com/");
+
+            string jsonModel = JsonConvert.SerializeObject(model);
+
+            StringContent body = new StringContent(jsonModel, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await client.PutAsync("/users/Update", body);
+
+            if ((int)response.StatusCode == 200 || (int)response.StatusCode == 202)
+                return true;
+
+            return false;
+        }
     }
 }
