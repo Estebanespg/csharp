@@ -1,0 +1,48 @@
+﻿@page "/Product/Read/{id}"
+@inject NavigationManager nav
+
+@code
+{
+    [Parameter]
+    public string? id { get; set; }
+
+    CRUD.Shared.Models.ProductModel product = new();
+
+    protected async override void OnInitialized()
+    {
+        int Uid = int.Parse(id ?? "0");
+        var u = await CRUD.Access.Controllers.Product.Read(Uid);
+        product = u;
+        StateHasChanged();
+        await base.OnInitializedAsync();
+    }
+
+
+    private void editView()
+    {
+        nav.NavigateTo($"/Product/Update/{product.Id}");
+    }
+
+    private async void deleteView()
+    {
+        await CRUD.Access.Controllers.Product.Delete(product.Id);
+        nav.NavigateTo($"/Users/Read/{product.Uid}/Products");
+    }
+
+    private void readAllView()
+    {
+        nav.NavigateTo("/Users/Read");
+    }
+}
+
+<div>
+    <h1>Information of: @product.Name</h1>
+
+    <p>Name: @product.Name</p>
+    <p>Description: @product.Description</p>
+    <p>Price: @product.Price</p>
+
+    <button @onclick="editView">Edit</button>
+    <button @onclick="deleteView">Delete</button>
+    <button @onclick="readAllView">Cancel</button>
+</div>

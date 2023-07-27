@@ -1,0 +1,39 @@
+﻿@page "/Users/Read/{id}/Products"
+@inject NavigationManager nav
+
+@code {
+    List<CRUD.Shared.Models.ProductModel> Productos = new();
+
+    [Parameter]
+    public string? id { get; set; }
+
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        int Uid = int.Parse(id ?? "0");
+        var products = await CRUD.Access.Controllers.Product.ReadAll(Uid);
+        Productos = products;
+        await base.OnInitializedAsync();
+    }
+
+    private void menuView()
+    {
+        nav.NavigateTo("/Users/Read");
+    }
+}
+
+
+
+<div>
+
+    <h1>Read all products</h1>
+
+    @foreach (CRUD.Shared.Models.ProductModel product in Productos)
+    {
+        <ProductCard Product="product" />
+    }
+
+    <button @onclick="menuView">Cancel</button>
+
+</div>

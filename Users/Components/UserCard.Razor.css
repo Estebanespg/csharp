@@ -3,16 +3,16 @@
 }
 
 .Name{
-    font-size: 15px;
+    font-size: 25px;
     color: black;
 }
 
 .Email {
-    font-size: 10px;
+    font-size: 25px;
     color: dimgray;
 }
 
 .PhoneNumber {
-    font-size: 10px;
+    font-size: 25px;
     color: dimgray;
 }

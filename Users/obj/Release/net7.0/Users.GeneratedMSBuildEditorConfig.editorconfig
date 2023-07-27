@@ -20,22 +20,54 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Components/UserCard.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVc2VyQ2FyZC5yYXpvcg==
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Components/ProductCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcm9kdWN0Q2FyZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/usuario/Desktop/CSHARP/csharp/Users/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/Create.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/Product/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFxDcmVhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/Product/ProductInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFxQcm9kdWN0SW5mby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/Product/Read.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFxSZWFkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/Product/Update.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdFxVcGRhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/User/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxDcmVhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/User/Read.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxSZWFkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/User/Update.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxVcGRhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Pages/User/UserInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxVc2VySW5mby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/usuario/Desktop/CSHARP/csharp/Users/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/usuario/Desktop/CSHARP/csharp/Users/Components/UserCard.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xVc2VyQ2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-afpder1vvv

@@ -1,0 +1,63 @@
+﻿@page "/Product/Update/{id}"
+@inject NavigationManager nav
+
+@code {
+    [Parameter]
+    public string? id { get; set; }
+
+    CRUD.Shared.Models.ProductModel product = new();
+
+    bool isLoading = false;
+    string Message;
+
+    protected async override void OnInitialized()
+    {
+        int Uid = int.Parse(id ?? "0");
+        var u = await CRUD.Access.Controllers.Product.Read(Uid);
+        product = u;
+        StateHasChanged();
+        await base.OnInitializedAsync();
+    }
+
+    private async void UpdateProduct()
+    {
+        Message = "Cargando";
+        isLoading = true;
+        StateHasChanged();
+
+        var response = await CRUD.Access.Controllers.Product.Update(product);
+
+        isLoading = false;
+        if (response)
+        {
+            Message = "Usuario Acualizado";
+            base.StateHasChanged();
+            return;
+        }
+
+        Message = "Hubo un error";
+        base.StateHasChanged();
+
+    }
+
+    private void userInfoView()
+    {
+        nav.NavigateTo($"/Product/Read/{product.Id}");
+    }
+}
+
+<div>
+
+    <h1>Update user</h1>
+    @if (!isLoading)
+    {
+        <input @bind="product.Name" type="text" placeholder="Name" />
+        <input @bind="product.Description" type="text" placeholder="Description" />
+        <input @bind="product.Price" type="number" placeholder="Price" />
+        <button @onclick="UpdateProduct">Update</button>
+    }
+    <button @onclick="userInfoView">Cancel</button>
+
+    <label>@Message</label>
+
+</div>

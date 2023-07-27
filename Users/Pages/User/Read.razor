@@ -18,15 +18,13 @@
     }
 }
 
-
-
 <div>
 
     <h1>Read all users</h1>
 
     @foreach(CRUD.Shared.Models.UserModel user in Usuarios)
     {
-        <UserCard User="user"/>
+        <UserCard DataUser="user"/>
     }
 
     <button @onclick="menuView">Cancel</button>

@@ -1,0 +1,63 @@
+﻿@page "/Users/CreateProduct"
+@inject NavigationManager Nav
+
+@code {
+
+    bool isLoading = false;
+    string Message;
+
+    string name = "";
+    string description = "";
+    int price;
+
+    private async void CreateProduct()
+    {
+
+        // Validaciones del cliente
+
+
+        Message = "Cargando";
+        isLoading = true;
+        StateHasChanged();
+
+        CRUD.Shared.Models.ProductModel model = new();
+        model.Name = name;
+        model.Description = description;
+        model.Price = price;
+
+        var response = await CRUD.Access.Controllers.Product.Create(model);
+
+        isLoading = false;
+        if (response)
+        {
+            Message = "Producto Creado";
+            base.StateHasChanged();
+            return;
+        }
+
+        Message = "Hubo un error";
+        base.StateHasChanged();
+
+    }
+
+    private void menuView()
+    {
+        Nav.NavigateTo("/");
+    }
+}
+
+<div>
+
+    <h1>Create a new product</h1>
+    @if (!isLoading)
+    {
+        <input @bind="name" type="text" placeholder="Name" />
+        <input @bind="description" type="text" placeholder="Description" />
+        <input @bind="price" type="number" placeholder="Price" />
+        <button @onclick="CreateProduct">Create</button>
+    }
+    <button @onclick="menuView">Cancel</button>
+
+    <label>@Message</label>
+
+</div>

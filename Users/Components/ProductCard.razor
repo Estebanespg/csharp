@@ -1,0 +1,21 @@
+﻿@inject NavigationManager nav
+
+@code {
+    [Parameter]
+    public CRUD.Shared.Models.ProductModel Product { get; set; }
+
+    private void productInfoView()
+    {
+        nav.NavigateTo($"Product/Read/{Product.Id}");
+    }
+}
+
+<div class="Container">
+
+    <p class="Name">@Product.Name</p>
+    <p class="Description">@Product.Description</p>
+    <p class="Price">@Product.Price</p>
+
+    <button @onclick="productInfoView" class="btn">More</button>
+
+</div>

@@ -1,0 +1,18 @@
+﻿.Container {
+    background-color: azure;
+}
+
+.Name {
+    font-size: 25px;
+    color: black;
+}
+
+.Description {
+    font-size: 25px;
+    color: dimgray;
+}
+
+.Price {
+    font-size: 25px;
+    color: dimgray;
+}

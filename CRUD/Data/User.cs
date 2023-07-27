@@ -45,6 +45,7 @@ public static class User
             var context = Conexión.GetOneConnection();
 
             var user = (from U in context.DataBase.Users 
+                       where U.State == 1
                        where U.Id == id
                        select U).FirstOrDefault();
 
@@ -56,7 +57,6 @@ public static class User
         {
             return new();
         }
-        return new();
     }
 
 
@@ -67,7 +67,8 @@ public static class User
         var context = Conexión.GetOneConnection();
 
         var users = (from U in context.DataBase.Users
-                        select U).ToList();
+                     where U.State == 1   
+                     select U).ToList();
 
         return users;
 
@@ -75,7 +76,6 @@ public static class User
 
     public static bool Update(Shared.Models.UserModel newData)
     {
-
         var context = Conexión.GetOneConnection();
 
         var user = (from U in context.DataBase.Users
@@ -91,20 +91,22 @@ public static class User
 
         context.DataBase.SaveChanges();
         return true;
-
     }
 
     public static bool Delete(int id)
     {
-        var connection = new MySqlConnection("host=localhost; user=root; database=users; password=; port=3306;");
-        connection.Open();
+        var context = Conexión.GetOneConnection();
 
-        var query = $""" DELETE FROM users WHERE id={id}""";
+        var user = (from U in context.DataBase.Users
+                    where U.Id == id
+                    select U).FirstOrDefault();
 
-        var command = new MySqlCommand(query, connection);
+        if (user == null)
+            return false;
 
-        int affectedRows = command.ExecuteNonQuery();
+        user.State = 2;
 
-        return (affectedRows > 0);
+        context.DataBase.SaveChanges();
+        return true;
     }
 }

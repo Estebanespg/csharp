@@ -28,7 +28,7 @@ public class UsersController : Controller
     }
 
     [HttpGet("{id}")]
-    public ActionResult Read(int id, [FromHeader] string test)
+    public ActionResult Read(int id)
     {
         if (id == 0)
             return StatusCode(404, "ID cannot be 0");
@@ -49,7 +49,7 @@ public class UsersController : Controller
         return Ok(userData);
     }
 
-    [HttpPut("Update")]
+    [HttpPut("update")]
     public ActionResult Update([FromBody] Shared.Models.UserModel model)
     {
         if (model.Id <= 0)
@@ -73,8 +73,11 @@ public class UsersController : Controller
     }
 
     [HttpDelete("{id}")]
-    public ActionResult Dario(int id)
+    public ActionResult Delete(int id)
     {
+        if (id <= 0)
+            return StatusCode(400, "ID Invalida");
+
         var userData = Data.User.Delete(id);
 
         if (userData)

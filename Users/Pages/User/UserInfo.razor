@@ -23,9 +23,15 @@
         nav.NavigateTo($"/Users/Update/{user.Id}");
     }
 
-    private void deleteView()
+    private async void deleteView()
     {
+        await CRUD.Access.Controllers.User.Delete(user.Id);
         nav.NavigateTo("/Users/Read");
+    }
+
+    private void productsView()
+    {
+        nav.NavigateTo($"/Users/Read/{user.Id}/Products");
     }
 
     private void readAllView()
@@ -43,5 +49,6 @@
 
     <button @onclick="editView">Edit</button>
     <button @onclick="deleteView">Delete</button>
+    <button @onclick="productsView">See Products</button>
     <button @onclick="readAllView">Cancel</button>
 </div>

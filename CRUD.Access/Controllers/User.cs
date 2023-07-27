@@ -35,7 +35,7 @@ namespace CRUD.Access.Controllers
 
             var user = JsonConvert.DeserializeObject<List<CRUD.Shared.Models.UserModel>>(content);
 
-            return user;
+            return user?? new List<CRUD.Shared.Models.UserModel>();
         }
 
         public static async Task<CRUD.Shared.Models.UserModel> Read(int id)
@@ -50,7 +50,7 @@ namespace CRUD.Access.Controllers
 
             var user = JsonConvert.DeserializeObject<CRUD.Shared.Models.UserModel>(content);
 
-            return user;
+            return user?? new CRUD.Shared.Models.UserModel();
         }
 
         public static async Task<bool> Update(CRUD.Shared.Models.UserModel model)
@@ -64,6 +64,20 @@ namespace CRUD.Access.Controllers
             StringContent body = new StringContent(jsonModel, Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await client.PutAsync("/users/Update", body);
+
+            if ((int)response.StatusCode == 200 || (int)response.StatusCode == 202)
+                return true;
+
+            return false;
+        }
+
+        public static async Task<bool> Delete(int id)
+        {
+            var client = new HttpClient();
+
+            client.BaseAddress = new Uri("http://crudbackfront.somee.com/");
+
+            HttpResponseMessage response = await client.DeleteAsync($"/users/{id}");
 
             if ((int)response.StatusCode == 200 || (int)response.StatusCode == 202)
                 return true;
